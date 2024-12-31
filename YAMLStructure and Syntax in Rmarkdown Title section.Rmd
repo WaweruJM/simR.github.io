@@ -1,0 +1,262 @@
+---
+title: "YAML Structure and Syntax in Rmarkdown Title section"
+author: "Dr. J. Waweru"
+date: "`r Sys.Date ()`"
+output:
+  pdf_document:
+    
+    theme: united
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+  html_document:
+    toc: true
+    number_sections: true
+    df_print: paged
+  output: ioslides_presentation
+references: references.bib
+---
+## Introduction
+```{r}
+tinytex::install_tinytex()
+```
+
+YAML is a type of computer language, under the group of Markdowm type. 
+
+YAML; Yet Another Markdown Language
+
+YAML; Yaml Ain't Markdown Language
+
+YAML is a *simpler* programming language, easily readable and compatible with many other programming languages enabling smooth cross language sharing.
+
+YAML has similar functionality as Java Script Object Notation (JSON) and eXtensible Markdown Language (XML) among others used for initial configuration files of computer programs.
+
+YAML is chosen as the language of choice in Rmarkdown title section and references, for its ease in human readability and ease of compatibility with multiple language formatting. 
+
+This enables reformatting into specific formats required for different publications.
+
+The title section and the references of a scientific paper are the most unique sections for many of publishers. The rest of the sections (IMRAD), largely remains identical.
+
+YAML is intended to hold the title and references sections of a scientific paper in a background computer language whose output format will match with specifications of any particular publisher.
+
+---
+
+## YAML Structure
+
+YAML is initialized with three(3) hyphens (- - -).
+
+Interval sections delineated by another three(3) hyphens (- - -). 
+
+YAML is closed finally with three(3) dots(…). 
+
+These hyphens are observable at the top and below the YAML section of Rmarkdown.
+
+The initial section is reserved as the header section and has default key values anticipated in header section. 
+
+Once the title is written as an input in this section, the subsequent entries take default of the author, date output and other defaults expected in this section. 
+
+Other entries in the title section  will be omitted at knitting. 
+
+The title section is broken by inserting another three(3) hyphens beneath to start a new section where further input may be entered.
+
+Multiple sections of YAML may be added similary by interrupting each section with three(3) hyphens.
+
+
+## Basic YAML Syntax
+
+YAML language uses syntax with Key and Value pairs.
+
+A key initializes the name and whose value is entered for the respective key.
+
+As in example >
+
+key: value
+
+title: "My research title"
+
+When a new Rmarkdown file is opened in Rstudio, it provides four keys along side their four anticipated values.
+
+#- - -
+
+#title: "Untitled"
+
+#author: "Name of author"
+
+#date: "`r Sys.Date()`"
+
+#output: html_document
+
+#- - -
+
+As common in other languages and as used above, the hash symbol # is used for commenting and silencing by pre-pending a line.
+
+Strings in YAML do not necessarily need to be in quotation marks unless they contain special characters (#"`r Sys.Date()`").
+
+#### Keys
+
+The keys [title, author,date, output] are not printed in the output. These are fundamentally in all report writing. 
+
+The title is meant to be maintained in all documents.
+
+The others are very appropriate and may be maintained as judged.
+
+Once again, keys are not reflected in the output document.
+
+As mentioned above, keys can be deleted or added. however only specific keys can be added in the title section for specific value input as will be later discussed.
+
+#### Values
+
+The Keys are separated by a colon and a single space from the entry of the value.
+
+For each respective key, editing is done to input the specific value entry per the personal document.
+
+As observed, the date default is an r code to generate the computer date. It is best maintained as such to reflect most recent date of knitting the document. However a specific date may be entered as desired.
+
+Document output refers to the knit format. Documents can be knit into several formats. The default is HTML and it automatically changes when other format is chosen from the knit drop down button. HTML format requires no additional packages installation and therefore a good initial default. The PDF format requires LATEX installation into the computer and word format requires Microsoft word or other. Comprehensive details on these is beyond the scope of this document and may be checked in further reading.
+
+## Additional Key: Value pairs in the title section.
+
+A few more key: Value pairs may be included in the title section as necessary.
+Format structure may be styled by calling specific key: value pairs as below.
+
+- Under output_format:
+
+  table of contents (toc: true)
+ 
+  depth of headers included (toc_depth: 3)
+ 
+  section numbering (section nunering: true)
+ 
+- Under references and style
+ 
+  bibliography: mybibfile.bib
+  
+  citation_package: "natbib"
+  
+  csl: "journal name"
+  
+ 
+When further entries are required, it is recommended the use of YAML templates with specific key: Value pairs as necessary for a specific journal. This is further discussed below.
+ 
+## Additional sections after the title page
+
+This is not included in the Rmarkdown default.
+However, additional YAML sections may be added by breaking with three(3) hyphens as explained above.
+
+Affiliations of authors may be added in several lines.
+
+Abstract of a document may also be included in the YAML section with the added multilanguage interchangeability.
+
+Handling of more YAML input requires a few more understanding of Yaml syntax structure.
+
+ 
+## Additional YAML structure.
+YAML uses full colon to associate key: Value pairs.
+key (full colon) space value
+
+YAML uses white space indentation inline to nest values
+
+   languages:
+       yaml
+       json
+       xml
+A list is generated with a dash line and a nested list with further indentation
+
+  - languages
+      yaml
+      json
+      xml
+   
+therefore YAML is sensitive to indentation alignment and spacing after colon.
+  
+A list may also be generated with square brackets separated with commas.
+
+Comments are escaped by a hash # symbol
+
+symbol > is used to output continous phrase as multi line phrases.
+
+symbol | is used to output multiline phrase as continous phrase.
+
+[yaml,json,xml]
+
+
+## YAML Templates
+
+rticles and Latex packages provide easy to use custom templates without necessitating indepth understanding of YAML structure and syntax.
+
+rticles package is downloaded in Rstudio and a widget with templates appears on opening a new r markdown file as routine.
+
+Templates are publisher specific.
+
+Below is is a template of YAML title header of elsevier publisher. Editing the values follows above explained procedure.
+...
+
+title: Short Paper 
+
+author :
+
+  - name: Alice Anonymous
+  
+    email: alice@example.com
+    
+    affiliation: Some Institute of Technology
+    
+    correspondingauthor: true
+    
+    footnote: 1
+ 
+address:
+
+  - code: Some Institute of Technology
+  
+    organization: Big Wig University
+    
+    addressline: 1 main street
+    
+    city: Gotham
+    
+    state: State
+    
+    postcode: 123456
+    
+    country: United States
+ 
+footnote:
+
+  - code: 1
+  
+    text: "This is the first author footnote."
+   
+abstract: |
+
+  This is the abstract.
+
+  It consists of two paragraphs.
+  
+keywords: 
+
+  - keyword1
+  
+  - keyword2
+  
+journal: "An awesome journal"
+
+date: "`r Sys.Date()`"
+
+linenumbers: false
+
+numbersections: true
+
+bibliography: mybibfile.bib
+
+biblio-style: elsarticle-harv 
+`
+output: 
+
+  rticles::elsevier_article:
+  
+    keep_tex: true
+    
+    citation_package: natbib
+
